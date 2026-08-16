@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulta Médica Virtual | Atención Nacional e Internacional</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; color: #1a1a1a; line-height: 1.6; background: #fff; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+a { color: inherit; text-decoration: none; }
+svg { display: block; }
+
+.container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+/* Nav */
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid #e5e5e5; padding: 12px 20px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.nav a { padding: 8px 16px; border-radius: 8px; font-size: 14px; color: #666; transition: all 0.15s ease; }
+.nav a:hover, .nav a.active { background: #f5f5f5; color: #1a1a1a; }
+
+/* Hero */
+.hero { text-align: center; padding: 64px 20px 48px; }
+.badge { display: inline-flex; align-items: center; gap: 8px; background: #e8f5e9; color: #2e7d32; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; margin-bottom: 20px; }
+.hero h1 { font-size: 36px; font-weight: 500; line-height: 1.15; margin-bottom: 12px; }
+.hero p { color: #666; font-size: 17px; max-width: 560px; margin: 0 auto 28px; }
+.btn-primary { background: #1a1a1a; color: #fff; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; transition: opacity 0.15s; display: inline-block; }
+.btn-primary:hover { opacity: 0.85; }
+.btn-secondary { background: transparent; color: #1a1a1a; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; border: 1px solid #ddd; transition: background 0.15s; display: inline-block; }
+.btn-secondary:hover { background: #f5f5f5; }
+.hero-tags { margin-top: 32px; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; color: #999; font-size: 13px; }
+.hero-tags span { display: flex; align-items: center; gap: 6px; }
+
+/* Sections */
+.section { padding: 48px 20px; }
+.section-title { font-size: 24px; font-weight: 500; text-align: center; margin-bottom: 8px; }
+.section-subtitle { text-align: center; color: #666; margin-bottom: 32px; font-size: 15px; }
+
+/* Grid */
+.grid { display: grid; gap: 16px; }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+/* Cards */
+.card { background: #fafafa; border: 1px solid #e5e5e5; border-radius: 12px; padding: 24px; transition: transform 0.15s, box-shadow 0.15s; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; background: #fff; border: 1px solid #e5e5e5; }
+.card h3 { font-size: 17px; font-weight: 500; margin-bottom: 8px; }
+.card p { font-size: 14px; color: #666; line-height: 1.6; }
+
+/* Steps */
+.step { display: flex; gap: 16px; align-items: flex-start; }
+.step-num { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: #1a1a1a; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; }
+.step h4 { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+.step p { font-size: 14px; color: #666; }
+
+/* Pricing */
+.price-card { border: 2px solid #e5e5e5; border-radius: 12px; padding: 28px; position: relative; }
+.price-card.featured { border-color: #1a1a1a; }
+.price-card .tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #1a1a1a; color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+.price-card h3 { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
+.price { font-size: 32px; font-weight: 500; margin-bottom: 4px; }
+.price span { font-size: 15px; color: #666; font-weight: 400; }
+.price-card ul { list-style: none; margin: 16px 0; }
+.price-card li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #666; margin-bottom: 10px; }
+.price-card li svg { flex-shrink: 0; }
+
+/* FAQ */
+.faq-item { border-bottom: 1px solid #e5e5e5; }
+.faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 16px 0; font-size: 15px; font-weight: 500; text-align: left; gap: 12px; background: none; border: none; cursor: pointer; }
+.faq-q svg { flex-shrink: 0; transition: transform 0.2s; }
+.faq-q.open svg { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.faq-a.open { max-height: 200px; }
+.faq-a p { padding-bottom: 16px; font-size: 14px; color: #666; line-height: 1.6; }
+
+/* Form */
+.form { display: grid; gap: 16px; }
+.form input, .form select, .form textarea { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid #ddd; background: #fff; font-size: 15px; color: #1a1a1a; outline: none; transition: border-color 0.15s; font-family: inherit; }
+.form input:focus, .form select:focus, .form textarea:focus { border-color: #1a1a1a; }
+.form textarea { min-height: 100px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+
+/* CTA Box */
+.cta-box { background: #fafafa; border-radius: 16px; padding: 40px 32px; text-align: center; max-width: 640px; margin: 0 auto; border: 1px solid #e5e5e5; }
+.cta-box h2 { font-size: 24px; font-weight: 500; margin-bottom: 12px; }
+.cta-box p { color: #666; margin-bottom: 24px; }
+
+/* Testimonials */
+.testi { background: #fafafa; border-radius: 12px; padding: 24px; }
+.testi-stars { color: #f9a825; font-size: 16px; margin-bottom: 10px; letter-spacing: 2px; }
+.testi p { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 12px; font-style: italic; }
+.testi-author { font-size: 14px; font-weight: 500; }
+.testi-author span { font-weight: 400; color: #999; }
+
+/* Footer */
+.footer { text-align: center; padding: 32px 20px; border-top: 1px solid #e5e5e5; margin-top: 32px; }
+.footer p { font-size: 13px; color: #999; }
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <a href="#hero" class="active">Inicio</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#como">Cómo funciona</a>
+  <a href="#precios">Precios</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contacto">Agendar</a>
+</nav>
+
+<!-- Hero -->
+<section id="hero" class="hero">
+  <div class="badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg>
+    Atención médica 100% virtual
+  </div>
+  <h1>Consulta médica desde cualquier lugar del mundo</h1>
+  <p>Atención personalizada por videollamada, recetas digitales enviadas a tu farmacia y seguimiento continuo. Sin filas, sin tráfico, sin esperas.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a href="#contacto" class="btn-primary">Agendar consulta</a>
+    <a href="#servicios" class="btn-secondary">Ver servicios</a>
+  </div>
+  <div class="hero-tags">
+    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 10l5 3-5 3V10z" fill="currentColor"/></svg> Videollamada HD</span>
+    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 3h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5"/></svg> Receta digital</span>
+    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg> Datos seguros</span>
+  </div>
+</section>
+
+<!-- Servicios -->
+<section id="servicios" class="section container">
+  <h2 class="section-title">Servicios disponibles</h2>
+  <p class="section-subtitle">Atención integral sin salir de casa, dondequiera que estés</p>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 10l5 3-5 3V10z" fill="currentColor"/></svg>
+      </div>
+      <h3>Consulta por videollamada</h3>
+      <p>Atención médica en tiempo real desde tu celular, tablet o computadora. Ideal para pacientes dentro y fuera del país.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M7 3h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+      <h3>Recetas digitales</h3>
+      <p>Recetas médicas válidas enviadas por correo electrónico o mensaje. También directo a la farmacia de tu preferencia.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+      <h3>Seguimiento continuo</h3>
+      <p>Control de tratamientos, ajuste de medicamentos y revisiones periódicas para asegurar tu recuperación.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 9h8M8 13h6" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+      <h3>Segunda opinión médica</h3>
+      <p>Revisión de diagnósticos previos, estudios de laboratorio e imágenes médicas con recomendaciones especializadas.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 18h.01" stroke="currentColor" stroke-width="2"/></svg>
+      </div>
+      <h3>Consulta desde el móvil</h3>
+      <p>Plataforma optimizada para smartphones. Agenda, paga y conéctate en minutos desde cualquier dispositivo.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+      <h3>Confidencialidad garantizada</h3>
+      <p>Tu información médica está protegida con cifrado de extremo a extremo. Cumplimos con normativas de privacidad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Cómo funciona -->
+<section id="como" class="section container" style="background:#fafafa;border-radius:16px;margin-bottom:32px">
+  <h2 class="section-title">¿Cómo funciona?</h2>
+  <p class="section-subtitle">Tres pasos simples para recibir atención médica</p>
+  <div class="grid grid-3" style="gap:24px">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <h4>Agenda tu cita</h4>
+        <p>Selecciona fecha, hora y tipo de consulta. Recibirás confirmación inmediata por correo o WhatsApp.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <h4>Conéctate por video</h4>
+        <p>Al momento de tu cita, accede al enlace de videollamada desde cualquier dispositivo con internet.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <h4>Recibe tu receta</h4>
+        <p>Si el médico lo indica, tu receta digital llegará en minutos. También puede enviarse a tu farmacia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Precios -->
+<section id="precios" class="section container">
+  <h2 class="section-title">Planes y precios</h2>
+  <p class="section-subtitle">Opciones flexibles para pacientes nacionales e internacionales</p>
+  <div class="grid grid-3">
+    <div class="price-card">
+      <h3>Consulta única</h3>
+      <div class="price">$45 <span>USD / consulta</span></div>
+      <ul>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Videollamada de 30 min</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Receta digital incluida</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Validez internacional</li>
+      </ul>
+      <a href="#contacto" class="btn-secondary" style="width:100%;display:block;text-align:center">Reservar</a>
+    </div>
+    <div class="price-card featured">
+      <div class="tag">Más popular</div>
+      <h3>Plan mensual</h3>
+      <div class="price">$120 <span>USD / mes</span></div>
+      <ul>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> 4 consultas incluidas</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Recetas ilimitadas</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Chat de seguimiento</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Prioridad en citas</li>
+      </ul>
+      <a href="#contacto" class="btn-primary" style="width:100%;display:block;text-align:center">Elegir plan</a>
+    </div>
+    <div class="price-card">
+      <h3>Empresas / Familiar</h3>
+      <div class="price">$280 <span>USD / mes</span></div>
+      <ul>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Hasta 5 beneficiarios</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> 10 consultas mensuales</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Reportes mensuales</li>
+      </ul>
+      <a href="#contacto" class="btn-secondary" style="width:100%;display:block;text-align:center">Contactar</a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonios -->
+<section class="section container">
+  <h2 class="section-title">Lo que dicen los pacientes</h2>
+  <div class="grid grid-2" style="margin-top:32px">
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <p>"Estaba de viaje en España y necesitaba renovar mi receta. En 15 minutos tuve la consulta y la receta en mi correo. Increíble servicio."</p>
+      <div class="testi-author">Carlos R. <span>— Madrid, España</span></div>
+    </div>
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <p>"La atención es muy profesional y el seguimiento por mensaje me da mucha tranquilidad. Recomiendo al 100% para quienes vivimos fuera del país."</p>
+      <div class="testi-author">Ana S. <span>— Miami, USA</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section container" style="max-width:720px">
+  <h2 class="section-title">Preguntas frecuentes</h2>
+  <div style="margin-top:32px">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ¿La receta digital es válida en cualquier país?
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </button>
+      <div class="faq-a"><p>Sí, las recetas se emiten con validez internacional. Dependiendo del país, algunas farmacias pueden requerir verificación adicional, pero el formato cumple con estándares médicos reconocidos globalmente.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ¿Qué necesito para la videollamada?
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </button>
+      <div class="faq-a"><p>Solo necesitas un dispositivo con cámara, micrófono y conexión a internet estable. Funciona desde celular, tablet o computadora sin instalar aplicaciones adicionales.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ¿Puedo usar mi seguro médico?
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </button>
+      <div class="faq-a"><p>Se emiten facturas y comprobantes de pago para que puedas solicitar reembolso a tu aseguradora. Te recomendamos verificar con tu seguro las coberturas de telemedicina.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ¿Qué pasa si necesito estudios de laboratorio?
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </button>
+      <div class="faq-a"><p>El médico puede solicitar estudios de laboratorio o imagenología. Te orientamos sobre dónde realizarlos en tu ciudad y luego revisamos los resultados en seguimiento virtual.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ¿Es segura la plataforma?
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </button>
+      <div class="faq-a"><p>Absolutamente. Utilizamos encriptación de extremo a extremo, cumplimos con normativas de protección de datos de salud (HIPAA/Ley de Protección de Datos) y tu historial clínico es confidencial.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section id="contacto" class="section container">
+  <div class="cta-box">
+    <h2>Agenda tu consulta hoy</h2>
+    <p>Completa el formulario y te contactaremos en menos de 24 horas para confirmar tu cita.</p>
+    <form class="form" style="text-align:left" onsubmit="event.preventDefault();alert('¡Gracias! Tu solicitud ha sido enviada. Te contactaremos pronto.');this.reset();">
+      <div class="form-row">
+        <input type="text" placeholder="Nombre completo" required>
+        <input type="email" placeholder="Correo electrónico" required>
+      </div>
+      <div class="form-row">
+        <select required>
+          <option value="">País de residencia</option>
+          <option>México</option>
+          <option>Estados Unidos</option>
+          <option>España</option>
+          <option>Colombia</option>
+          <option>Argentina</option>
+          <option>Chile</option>
+          <option>Otro</option>
+        </select>
+        <select required>
+          <option value="">Tipo de consulta</option>
+          <option>Consulta general</option>
+          <option>Segunda opinión</option>
+          <option>Renovación de receta</option>
+          <option>Seguimiento</option>
+          <option>Plan empresarial/familiar</option>
+        </select>
+      </div>
+      <textarea placeholder="Describe brevemente tu motivo de consulta..." required></textarea>
+      <button type="submit" class="btn-primary" style="width:100%">Solicitar cita</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p style="margin-bottom:8px">Consulta médica virtual · Atención nacional e internacional</p>
+  <p>Recetas digitales · Videollamada · Seguimiento continuo</p>
+  <p style="margin-top:12px;color:#bbb;font-size:12px">Esta página es un prototipo. La información de contacto real debe ser configurada por el médico.</p>
+</footer>
+
+<script>
+function toggleFaq(btn){
+  const ans = btn.nextElementSibling;
+  const isOpen = ans.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+  if(!isOpen){
+    ans.classList.add('open');
+    btn.classList.add('open');
+  }
+}
+</script>
+
+</body>
+</html>
