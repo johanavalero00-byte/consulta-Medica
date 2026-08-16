@@ -1,64 +1,101 @@
-<!DOCTYPE html>
+html_content = '''<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Consulta Médica Virtual | Atención Nacional e Internacional</title>
+<meta name="description" content="Dra. Johana Valero - Consulta médica virtual y atención a domicilio. Suero intravenoso, recetas digitales, videollamada médica. Atención nacional e internacional.">
+<meta name="keywords" content="Dra Johana Valero, telemedicina, consulta médica online, suero intravenoso, atención médica a domicilio, receta digital, médico virtual Venezuela">
+<meta name="author" content="Dra. Johana Valero">
+<meta property="og:title" content="Dra. Johana Valero | Consulta Médica Virtual & Atención a Domicilio">
+<meta property="og:description" content="Atención médica personalizada por videollamada, suero intravenoso y servicios a domicilio. Contacto: +58 0412-9415909">
+<meta property="og:type" content="website">
+<title>Dra. Johana Valero | Consulta Médica Virtual & Atención a Domicilio</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🏥</text></svg>">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; color: #1a1a1a; line-height: 1.6; background: #fff; }
 button { font: inherit; cursor: pointer; border: none; background: none; }
 a { color: inherit; text-decoration: none; }
 svg { display: block; }
+img { max-width: 100%; height: auto; display: block; }
 
 .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
 
-.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid #e5e5e5; padding: 12px 20px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+/* Nav */
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #e5e5e5; padding: 12px 20px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
 .nav a { padding: 8px 16px; border-radius: 8px; font-size: 14px; color: #666; transition: all 0.15s ease; }
 .nav a:hover, .nav a.active { background: #f5f5f5; color: #1a1a1a; }
 
-.hero { text-align: center; padding: 64px 20px 48px; }
+/* Hero */
+.hero { text-align: center; padding: 48px 20px 40px; }
 .badge { display: inline-flex; align-items: center; gap: 8px; background: #e8f5e9; color: #2e7d32; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; margin-bottom: 20px; }
-.hero h1 { font-size: 36px; font-weight: 500; line-height: 1.15; margin-bottom: 12px; }
-.hero p { color: #666; font-size: 17px; max-width: 560px; margin: 0 auto 28px; }
-.btn-primary { background: #1a1a1a; color: #fff; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; transition: opacity 0.15s; display: inline-block; }
+.hero h1 { font-size: 32px; font-weight: 600; line-height: 1.15; margin-bottom: 12px; }
+.hero p { color: #666; font-size: 17px; max-width: 560px; margin: 0 auto 24px; }
+.btn-primary { background: #1a1a1a; color: #fff; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; transition: opacity 0.15s; display: inline-flex; align-items: center; gap: 8px; }
 .btn-primary:hover { opacity: 0.85; }
-.btn-secondary { background: transparent; color: #1a1a1a; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; border: 1px solid #ddd; transition: background 0.15s; display: inline-block; }
+.btn-secondary { background: transparent; color: #1a1a1a; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; border: 1px solid #ddd; transition: background 0.15s; display: inline-flex; align-items: center; gap: 8px; }
 .btn-secondary:hover { background: #f5f5f5; }
-.hero-tags { margin-top: 32px; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; color: #999; font-size: 13px; }
+.btn-whatsapp { background: #25d366; color: #fff; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; transition: opacity 0.15s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-whatsapp:hover { opacity: 0.9; }
+.hero-tags { margin-top: 28px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; color: #999; font-size: 13px; }
 .hero-tags span { display: flex; align-items: center; gap: 6px; }
 
+/* Doctor Profile */
+.doctor-section { padding: 48px 20px; background: #fafafa; }
+.doctor-card { display: flex; gap: 32px; align-items: center; max-width: 800px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+.doctor-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.doctor-info { flex: 1; min-width: 280px; text-align: center; }
+.doctor-info h2 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+.doctor-info .title { color: #666; font-size: 15px; margin-bottom: 16px; }
+.doctor-info p { color: #555; font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+.doctor-contact { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.doctor-contact a { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: #444; padding: 8px 16px; background: #fff; border-radius: 8px; border: 1px solid #e5e5e5; transition: all 0.15s; }
+.doctor-contact a:hover { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+
+/* Sections */
 .section { padding: 48px 20px; }
-.section-title { font-size: 24px; font-weight: 500; text-align: center; margin-bottom: 8px; }
+.section-title { font-size: 24px; font-weight: 600; text-align: center; margin-bottom: 8px; }
 .section-subtitle { text-align: center; color: #666; margin-bottom: 32px; font-size: 15px; }
 
+/* Grid */
 .grid { display: grid; gap: 16px; }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 
+/* Cards */
 .card { background: #fafafa; border: 1px solid #e5e5e5; border-radius: 12px; padding: 24px; transition: transform 0.15s, box-shadow 0.15s; }
 .card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
 .card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; background: #fff; border: 1px solid #e5e5e5; }
-.card h3 { font-size: 17px; font-weight: 500; margin-bottom: 8px; }
+.card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
 .card p { font-size: 14px; color: #666; line-height: 1.6; }
 
+/* Flyer Gallery */
+.flyer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 24px; }
+.flyer-card { border-radius: 12px; overflow: hidden; border: 1px solid #e5e5e5; background: #fff; transition: transform 0.15s, box-shadow 0.15s; }
+.flyer-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.flyer-card img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Steps */
 .step { display: flex; gap: 16px; align-items: flex-start; }
 .step-num { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: #1a1a1a; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; }
-.step h4 { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+.step h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
 .step p { font-size: 14px; color: #666; }
 
+/* Pricing */
 .price-card { border: 2px solid #e5e5e5; border-radius: 12px; padding: 28px; position: relative; }
 .price-card.featured { border-color: #1a1a1a; }
 .price-card .tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #1a1a1a; color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 500; }
-.price-card h3 { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
-.price { font-size: 32px; font-weight: 500; margin-bottom: 4px; }
+.price-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.price { font-size: 32px; font-weight: 600; margin-bottom: 4px; }
 .price span { font-size: 15px; color: #666; font-weight: 400; }
 .price-card ul { list-style: none; margin: 16px 0; }
 .price-card li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #666; margin-bottom: 10px; }
 .price-card li svg { flex-shrink: 0; }
 
+/* FAQ */
 .faq-item { border-bottom: 1px solid #e5e5e5; }
 .faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 16px 0; font-size: 15px; font-weight: 500; text-align: left; gap: 12px; background: none; border: none; cursor: pointer; }
 .faq-q svg { flex-shrink: 0; transition: transform 0.2s; }
@@ -67,31 +104,58 @@ svg { display: block; }
 .faq-a.open { max-height: 200px; }
 .faq-a p { padding-bottom: 16px; font-size: 14px; color: #666; line-height: 1.6; }
 
+/* Form */
 .form { display: grid; gap: 16px; }
+.form-group { text-align: left; }
+.form label { display: block; font-size: 13px; color: #666; margin-bottom: 4px; font-weight: 500; }
 .form input, .form select, .form textarea { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid #ddd; background: #fff; font-size: 15px; color: #1a1a1a; outline: none; transition: border-color 0.15s; font-family: inherit; }
 .form input:focus, .form select:focus, .form textarea:focus { border-color: #1a1a1a; }
 .form textarea { min-height: 100px; resize: vertical; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media(max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
 
+/* CTA Box */
 .cta-box { background: #fafafa; border-radius: 16px; padding: 40px 32px; text-align: center; max-width: 640px; margin: 0 auto; border: 1px solid #e5e5e5; }
-.cta-box h2 { font-size: 24px; font-weight: 500; margin-bottom: 12px; }
+.cta-box h2 { font-size: 24px; font-weight: 600; margin-bottom: 12px; }
 .cta-box p { color: #666; margin-bottom: 24px; }
 
+/* Testimonials */
 .testi { background: #fafafa; border-radius: 12px; padding: 24px; }
 .testi-stars { color: #f9a825; font-size: 16px; margin-bottom: 10px; letter-spacing: 2px; }
 .testi p { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 12px; font-style: italic; }
-.testi-author { font-size: 14px; font-weight: 500; }
+.testi-author { font-size: 14px; font-weight: 600; }
 .testi-author span { font-weight: 400; color: #999; }
 
-.footer { text-align: center; padding: 32px 20px; border-top: 1px solid #e5e5e5; margin-top: 32px; }
-.footer p { font-size: 13px; color: #999; }
+/* Footer */
+.footer { text-align: center; padding: 40px 20px; border-top: 1px solid #e5e5e5; margin-top: 32px; background: #fafafa; }
+.footer-brand { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.footer-desc { font-size: 14px; color: #666; margin-bottom: 20px; }
+.footer-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.footer-links a { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: #444; padding: 10px 18px; background: #fff; border-radius: 8px; border: 1px solid #e5e5e5; transition: all 0.15s; }
+.footer-links a:hover { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.footer-note { font-size: 12px; color: #bbb; margin-top: 16px; }
+
+/* WhatsApp Float */
+.whatsapp-float { position: fixed; bottom: 24px; right: 24px; z-index: 200; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(37,211,102,0.4); transition: transform 0.15s; }
+.whatsapp-float:hover { transform: scale(1.08); }
+.whatsapp-float svg { width: 28px; height: 28px; }
+
+/* Responsive */
+@media(max-width: 640px) {
+  .hero h1 { font-size: 26px; }
+  .doctor-card { flex-direction: column; }
+  .doctor-info { text-align: center; }
+  .nav { gap: 4px; }
+  .nav a { padding: 6px 10px; font-size: 13px; }
+}
 </style>
 </head>
 <body>
 
+<!-- Navigation -->
 <nav class="nav">
   <a href="#hero" class="active">Inicio</a>
+  <a href="#doctor">Sobre mí</a>
   <a href="#servicios">Servicios</a>
   <a href="#como">Cómo funciona</a>
   <a href="#precios">Precios</a>
@@ -99,31 +163,59 @@ svg { display: block; }
   <a href="#contacto">Agendar</a>
 </nav>
 
+<!-- Hero -->
 <section id="hero" class="hero">
   <div class="badge">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg>
-    Atención médica 100% virtual
+    Atención médica 100% virtual y a domicilio
   </div>
-  <img src="https://raw.githubusercontent.com/johanavalero00-byte/consulta-Medica/main/imagen_887b3db9.png" alt="Doctor" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin:20px auto;display:block;border:4px solid #fff;box-shadow:0 4px 20px rgba(0,0,0,0.15)">
-  <h1>Consulta médica desde cualquier lugar del mundo</h1>
-  <p>Atención personalizada por videollamada, recetas digitales enviadas a tu farmacia y seguimiento continuo. Sin filas, sin tráfico, sin esperas.</p>
+  <h1>Dra. Johana Valero<br><span style="font-weight:400;font-size:22px;color:#666">Consulta médica desde cualquier lugar del mundo</span></h1>
+  <p>Atención personalizada por videollamada, suero intravenoso, recetas digitales y servicios médicos a domicilio. Sin filas, sin tráfico, sin esperas.</p>
   <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-    <a href="#contacto" class="btn-primary">Agendar consulta</a>
+    <a href="https://wa.me/5804129415909" target="_blank" class="btn-whatsapp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Escribir por WhatsApp
+    </a>
     <a href="#servicios" class="btn-secondary">Ver servicios</a>
   </div>
   <div class="hero-tags">
     <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 10l5 3-5 3V10z" fill="currentColor"/></svg> Videollamada HD</span>
     <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 3h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5"/></svg> Receta digital</span>
-    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg> Datos seguros</span>
+    <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg> Atención a domicilio</span>
   </div>
 </section>
 
+<!-- Sobre la Dra. -->
+<section id="doctor" class="doctor-section">
+  <div class="doctor-card">
+    <img src="./1003514750.jpg" alt="Dra. Johana Valero" class="doctor-img">
+    <div class="doctor-info">
+      <h2>Dra. Johana Valero</h2>
+      <div class="title">Médico General · Atención Virtual y Domiciliaria</div>
+      <p>Con años de experiencia brindando atención médica de calidad, ofrezco consultas virtuales accesibles desde cualquier país, así como servicios especializados a domicilio. Mi compromiso es tu salud, con calidez humana, profesionalismo y disponibilidad inmediata.</p>
+      <div class="doctor-contact">
+        <a href="https://wa.me/5804129415909" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          +58 0412-9415909
+        </a>
+        <a href="mailto:johanavalero00@gmail.com">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 5l10 7 10-7"/></svg>
+          johanavalero00@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Servicios -->
 <section id="servicios" class="section container">
   <h2 class="section-title">Servicios disponibles</h2>
   <p class="section-subtitle">Atención integral sin salir de casa, dondequiera que estés</p>
   <div class="grid grid-3">
     <div class="card">
-      <img src="https://raw.githubusercontent.com/johanavalero00-byte/consulta-Medica/main/imagen_63e664ab.png" alt="Consulta online" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:12px">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 10l5 3-5 3V10z" fill="currentColor"/></svg>
+      </div>
       <h3>Consulta por videollamada</h3>
       <p>Atención médica en tiempo real desde tu celular, tablet o computadora. Ideal para pacientes dentro y fuera del país.</p>
     </div>
@@ -143,32 +235,52 @@ svg { display: block; }
     </div>
     <div class="card">
       <div class="card-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 9h8M8 13h6" stroke="currentColor" stroke-width="1.5"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
       </div>
-      <h3>Segunda opinión médica</h3>
-      <p>Revisión de diagnósticos previos, estudios de laboratorio e imágenes médicas con recomendaciones especializadas.</p>
+      <h3>Atención médica a domicilio</h3>
+      <p>Evaluación médica completa en la comodidad de tu casa. Ideal para adultos mayores, pacientes postrados o con movilidad reducida.</p>
     </div>
     <div class="card">
       <div class="card-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 18h.01" stroke="currentColor" stroke-width="2"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0L12 2.69z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
       </div>
-      <h3>Consulta desde el móvil</h3>
-      <p>Plataforma optimizada para smartphones. Agenda, paga y conéctate en minutos desde cualquier dispositivo.</p>
+      <h3>Suero intravenoso (Suero terapia)</h3>
+      <p>Nutrición directa en tu sangre. Energía instantánea, recuperación acelerada, piel radiante e inmunidad reforzada. Fórmulas personalizadas.</p>
     </div>
     <div class="card">
       <div class="card-icon">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
       </div>
       <h3>Confidencialidad garantizada</h3>
-      <p>Tu información médica está protegida con cifrado de extremo a extremo. Cumplimos con normativas de privacidad.</p>
+      <p>Tu información médica está protegida. Cumplimos con normativas de privacidad y cuidado de datos de salud.</p>
     </div>
   </div>
 </section>
 
+<!-- Flyers / Servicios Especiales -->
+<section class="section container" style="background:#fafafa;border-radius:16px;margin-bottom:32px">
+  <h2 class="section-title">Servicios especializados</h2>
+  <p class="section-subtitle">Conoce más sobre nuestros tratamientos y atención domiciliaria</p>
+  <div class="flyer-grid">
+    <div class="flyer-card">
+      <img src="./1003516628.jpg" alt="Terapia de suero intravenoso - Dra. Johana Valero">
+    </div>
+    <div class="flyer-card">
+      <img src="./1003516625.jpg" alt="Suero terapia y atención médica a domicilio">
+    </div>
+    <div class="flyer-card">
+      <img src="./1003516629.jpg" alt="Beneficios de la suero terapia - Dra. Johana Valero">
+    </div>
+    <div class="flyer-card">
+      <img src="./1003516626.jpg" alt="Atención médica a domicilio - servicios">
+    </div>
+  </div>
+</section>
+
+<!-- Cómo funciona -->
 <section id="como" class="section container" style="background:#fafafa;border-radius:16px;margin-bottom:32px">
   <h2 class="section-title">¿Cómo funciona?</h2>
   <p class="section-subtitle">Tres pasos simples para recibir atención médica</p>
-  <img src="https://raw.githubusercontent.com/johanavalero00-byte/consulta-Medica/main/imagen_5673e493.png" alt="Servicio médico" style="width:100%;max-width:500px;margin:0 auto 32px;display:block;border-radius:12px">
   <div class="grid grid-3" style="gap:24px">
     <div class="step">
       <div class="step-num">1</div>
@@ -194,19 +306,20 @@ svg { display: block; }
   </div>
 </section>
 
+<!-- Precios -->
 <section id="precios" class="section container">
   <h2 class="section-title">Planes y precios</h2>
   <p class="section-subtitle">Opciones flexibles para pacientes nacionales e internacionales</p>
   <div class="grid grid-3">
     <div class="price-card">
       <h3>Consulta única</h3>
-      <div class="price">$40 <span>USD / consulta</span></div>
+      <div class="price">$45 <span>USD / consulta</span></div>
       <ul>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Videollamada de 30 min</li>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Receta digital incluida</li>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Validez internacional</li>
       </ul>
-      <a href="#contacto" class="btn-secondary" style="width:100%;display:block;text-align:center">Reservar</a>
+      <a href="https://wa.me/5804129415909" target="_blank" class="btn-secondary" style="width:100%;display:block;text-align:center">Reservar por WhatsApp</a>
     </div>
     <div class="price-card featured">
       <div class="tag">Más popular</div>
@@ -218,37 +331,39 @@ svg { display: block; }
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Chat de seguimiento</li>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Prioridad en citas</li>
       </ul>
-      <a href="#contacto" class="btn-primary" style="width:100%;display:block;text-align:center">Elegir plan</a>
+      <a href="https://wa.me/5804129415909" target="_blank" class="btn-primary" style="width:100%;display:block;text-align:center">Elegir plan</a>
     </div>
     <div class="price-card">
       <h3>Empresas / Familiar</h3>
-      <div class="price">$200 <span>USD / mes</span></div>
+      <div class="price">$280 <span>USD / mes</span></div>
       <ul>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Hasta 5 beneficiarios</li>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> 10 consultas mensuales</li>
         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19.3 5.9c.4-.4.9-.4 1.3 0 .4.4.4.9 0 1.3l-10.9 10.9c-.4.4-.9.4-1.3 0l-5-5c-.4-.4-.4-.9 0-1.3.4-.4.9-.4 1.3 0l4.3 4.3L19.3 5.9z" fill="currentColor"/></svg> Reportes mensuales</li>
       </ul>
-      <a href="#contacto" class="btn-secondary" style="width:100%;display:block;text-align:center">Contactar</a>
+      <a href="https://wa.me/5804129415909" target="_blank" class="btn-secondary" style="width:100%;display:block;text-align:center">Contactar</a>
     </div>
   </div>
 </section>
 
+<!-- Testimonios -->
 <section class="section container">
   <h2 class="section-title">Lo que dicen los pacientes</h2>
   <div class="grid grid-2" style="margin-top:32px">
     <div class="testi">
       <div class="testi-stars">★★★★★</div>
-      <p>"Estaba de viaje en España y necesitaba renovar mi receta. En 15 minutos tuve la consulta y la receta en mi correo. Increíble servicio."</p>
+      <p>"Estaba de viaje en España y necesitaba renovar mi receta. En 15 minutos tuve la consulta y la receta en mi correo. Increíble servicio de la Dra. Valero."</p>
       <div class="testi-author">Carlos R. <span>— Madrid, España</span></div>
     </div>
     <div class="testi">
       <div class="testi-stars">★★★★★</div>
-      <p>"La atención es muy profesional y el seguimiento por mensaje me da mucha tranquilidad. Recomiendo al 100% para quienes vivimos fuera del país."</p>
-      <div class="testi-author">Ana S. <span>— Miami, USA</span></div>
+      <p>"La atención a domicilio fue excelente. Mi madre no puede salir de casa y la Dra. Valero fue muy profesional y cariñosa. Totalmente recomendada."</p>
+      <div class="testi-author">María G. <span>— Caracas, Venezuela</span></div>
     </div>
   </div>
 </section>
 
+<!-- FAQ -->
 <section id="faq" class="section container" style="max-width:720px">
   <h2 class="section-title">Preguntas frecuentes</h2>
   <div style="margin-top:32px">
@@ -268,10 +383,10 @@ svg { display: block; }
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
-        ¿Puedo usar mi seguro médico?
+        ¿Atienden a domicilio en todas las zonas?
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
       </button>
-      <div class="faq-a"><p>Se emiten facturas y comprobantes de pago para que puedas solicitar reembolso a tu aseguradora. Te recomendamos verificar con tu seguro las coberturas de telemedicina.</p></div>
+      <div class="faq-a"><p>La atención a domicilio está disponible según zona y disponibilidad. Escríbenos por WhatsApp al +58 0412-9415909 para confirmar cobertura en tu área.</p></div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
@@ -285,52 +400,100 @@ svg { display: block; }
         ¿Es segura la plataforma?
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
       </button>
-      <div class="faq-a"><p>Absolutamente. Utilizamos encriptación de extremo a extremo, cumplimos con normativas de protección de datos de salud (HIPAA/Ley de Protección de Datos) y tu historial clínico es confidencial.</p></div>
+      <div class="faq-a"><p>Absolutamente. Tu información médica es confidencial y está protegida. Cumplimos con normativas de protección de datos de salud y tu historial clínico es estrictamente privado.</p></div>
     </div>
   </div>
 </section>
 
+<!-- Contacto -->
 <section id="contacto" class="section container">
   <div class="cta-box">
     <h2>Agenda tu consulta hoy</h2>
-    <p>Completa el formulario y te contactaremos en menos de 24 horas para confirmar tu cita.</p>
-    <form class="form" style="text-align:left" onsubmit="event.preventDefault();alert('¡Gracias! Tu solicitud ha sido enviada. Te contactaremos pronto.');this.reset();">
+    <p>Completa el formulario o escríbeme directamente por WhatsApp. Te contactaré en menos de 24 horas.</p>
+    <form class="form" style="text-align:left" onsubmit="event.preventDefault();alert('¡Gracias! Tu solicitud ha sido enviada. La Dra. Johana Valero te contactará pronto.');this.reset();">
       <div class="form-row">
-        <input type="text" placeholder="Nombre completo" required>
-        <input type="email" placeholder="Correo electrónico" required>
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: María González" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="Ej: maria@email.com" required>
+        </div>
       </div>
       <div class="form-row">
-        <select required>
-          <option value="">País de residencia</option>
-          <option>Venezuela</option>
-          <option>México</option>
-          <option>Estados Unidos</option>
-          <option>España</option>
-          <option>Colombia</option>
-          <option>Argentina</option>
-          <option>Chile</option>
-          <option>Otro</option>
-        </select>
-        <select required>
-          <option value="">Tipo de consulta</option>
-          <option>Consulta general</option>
-          <option>Segunda opinión</option>
-          <option>Renovación de receta</option>
-          <option>Seguimiento</option>
-          <option>Plan empresarial/familiar</option>
-        </select>
+        <div class="form-group">
+          <label for="pais">País de residencia</label>
+          <select id="pais" name="pais" required>
+            <option value="">Seleccionar...</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="Mexico">México</option>
+            <option value="USA">Estados Unidos</option>
+            <option value="Espana">España</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Chile">Chile</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tipo">Tipo de consulta</label>
+          <select id="tipo" name="tipo" required>
+            <option value="">Seleccionar...</option>
+            <option value="general">Consulta general</option>
+            <option value="segunda_opinion">Segunda opinión</option>
+            <option value="receta">Renovación de receta</option>
+            <option value="seguimiento">Seguimiento</option>
+            <option value="suero">Suero intravenoso</option>
+            <option value="domicilio">Atención a domicilio</option>
+            <option value="empresarial">Plan empresarial/familiar</option>
+          </select>
+        </div>
       </div>
-      <textarea placeholder="Describe brevemente tu motivo de consulta..." required></textarea>
-      <button type="submit" class="btn-primary" style="width:100%">Solicitar cita</button>
+      <div class="form-group">
+        <label for="mensaje">Motivo de consulta</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Describe brevemente tu motivo de consulta..." required></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center">Solicitar cita</button>
     </form>
+    <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="https://wa.me/5804129415909" target="_blank" class="btn-whatsapp" style="font-size:14px;padding:10px 20px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp: +58 0412-9415909
+      </a>
+      <a href="mailto:johanavalero00@gmail.com" class="btn-secondary" style="font-size:14px;padding:10px 20px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 5l10 7 10-7"/></svg>
+        johanavalero00@gmail.com
+      </a>
+    </div>
   </div>
 </section>
 
+<!-- Footer -->
 <footer class="footer">
-  <p style="margin-bottom:8px">Consulta médica virtual · Atención nacional e internacional</p>
-  <p>Recetas digitales · Videollamada · Seguimiento continuo</p>
-  <p style="margin-top:12px;color:#bbb;font-size:12px">Esta página es un prototipo. La información de contacto real debe ser configurada por el médico.</p>
+  <div class="footer-brand">Dra. Johana Valero</div>
+  <div class="footer-desc">Consulta médica virtual · Atención a domicilio · Suero intravenoso<br>Atención nacional e internacional</div>
+  <div class="footer-links">
+    <a href="https://wa.me/5804129415909" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="mailto:johanavalero00@gmail.com">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 5l10 7 10-7"/></svg>
+      Email
+    </a>
+    <a href="tel:+5804129415909">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Llamar
+    </a>
+  </div>
+  <p class="footer-note">© 2026 Dra. Johana Valero. Todos los derechos reservados.<br>La información de esta página es orientativa y no sustituye la consulta médica presencial cuando sea necesaria.</p>
 </footer>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/5804129415909" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <script>
 function toggleFaq(btn){
@@ -343,7 +506,30 @@ function toggleFaq(btn){
     btn.classList.add('open');
   }
 }
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if(scrollY >= sectionTop - 100) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if(link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
 </script>
 
 </body>
-</html>
+</html>'''
+
+# Guardar el archivo
+output_path = "/mnt/agents/output/index.html"
+with open(output_path, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print(f"✅ Archivo HTML guardado en: {output_path}")
+print(f"📄 Tamaño: {len(html_content):,} caracteres")
